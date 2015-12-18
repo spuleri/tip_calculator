@@ -12,6 +12,9 @@
 		E150F3AE1C2364F2004BD9A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E150F3AC1C2364F2004BD9A6 /* Main.storyboard */; };
 		E150F3B01C2364F2004BD9A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E150F3AF1C2364F2004BD9A6 /* Assets.xcassets */; };
 		E150F3B31C2364F2004BD9A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E150F3B11C2364F2004BD9A6 /* LaunchScreen.storyboard */; };
+		E150F3C11C2472B4004BD9A6 /* MenuDrawerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E150F3C01C2472B4004BD9A6 /* MenuDrawerView.xib */; };
+		E150F3C51C247579004BD9A6 /* MenuDrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150F3C41C247579004BD9A6 /* MenuDrawerView.swift */; };
+		E1646D771C24ACF700EEDD35 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1646D761C24ACF700EEDD35 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		E150F3AF1C2364F2004BD9A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E150F3B21C2364F2004BD9A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E150F3B41C2364F2004BD9A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E150F3C01C2472B4004BD9A6 /* MenuDrawerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuDrawerView.xib; path = ../MenuDrawerView.xib; sourceTree = "<group>"; };
+		E150F3C41C247579004BD9A6 /* MenuDrawerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDrawerView.swift; sourceTree = "<group>"; };
+		E1646D761C24ACF700EEDD35 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				E150F3A81C2364F2004BD9A6 /* AppDelegate.swift */,
+				E1646D761C24ACF700EEDD35 /* SettingsViewController.swift */,
 				E150F3AA1C2364F2004BD9A6 /* ViewController.swift */,
+				E150F3C41C247579004BD9A6 /* MenuDrawerView.swift */,
+				E150F3C01C2472B4004BD9A6 /* MenuDrawerView.xib */,
 				E150F3AC1C2364F2004BD9A6 /* Main.storyboard */,
 				E150F3AF1C2364F2004BD9A6 /* Assets.xcassets */,
 				E150F3B11C2364F2004BD9A6 /* LaunchScreen.storyboard */,
@@ -123,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E150F3C11C2472B4004BD9A6 /* MenuDrawerView.xib in Resources */,
 				E150F3B31C2364F2004BD9A6 /* LaunchScreen.storyboard in Resources */,
 				E150F3B01C2364F2004BD9A6 /* Assets.xcassets in Resources */,
 				E150F3AE1C2364F2004BD9A6 /* Main.storyboard in Resources */,
@@ -137,7 +147,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E150F3AB1C2364F2004BD9A6 /* ViewController.swift in Sources */,
+				E150F3C51C247579004BD9A6 /* MenuDrawerView.swift in Sources */,
 				E150F3A91C2364F2004BD9A6 /* AppDelegate.swift in Sources */,
+				E1646D771C24ACF700EEDD35 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +297,7 @@
 				E150F3B91C2364F2004BD9A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

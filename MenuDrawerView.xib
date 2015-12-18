@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MenuDrawerView" customModule="tip_calculator" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJd-LG-ExQ">
+                    <rect key="frame" x="8" y="85" width="76" height="39"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                    <state key="normal" title="Settings">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="settingsClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZvS-Jn-BNL"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lc-Ba-Mrz">
+                    <rect key="frame" x="8" y="150" width="125" height="39"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                    <state key="normal" title="Recent Totals">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="recentTotalsClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="ynP-Nc-hVo"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpK-Ta-LiY">
+                    <rect key="frame" x="8" y="26" width="65" height="39"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="lG1-zK-nL0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="HpK-Ta-LiY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="2Wy-LG-G9I"/>
+                <constraint firstItem="MJd-LG-ExQ" firstAttribute="top" secondItem="HpK-Ta-LiY" secondAttribute="bottom" constant="20" id="EZ4-wT-6xA"/>
+                <constraint firstItem="5lc-Ba-Mrz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="G7U-Gb-xdl"/>
+                <constraint firstItem="HpK-Ta-LiY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="26" id="Uam-SC-W7P"/>
+                <constraint firstItem="MJd-LG-ExQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="qMF-jH-m8J"/>
+                <constraint firstItem="5lc-Ba-Mrz" firstAttribute="top" secondItem="MJd-LG-ExQ" secondAttribute="bottom" constant="26" id="xjE-Jg-xHx"/>
+            </constraints>
+            <connections>
+                <outlet property="cancelButton" destination="HpK-Ta-LiY" id="5b7-xR-aKZ"/>
+                <outlet property="recentsButton" destination="5lc-Ba-Mrz" id="bzO-wR-Zjg"/>
+                <outlet property="settingsButton" destination="MJd-LG-ExQ" id="mjn-oQ-wp7"/>
+            </connections>
+            <point key="canvasLocation" x="375" y="476"/>
+        </view>
+    </objects>
+</document>

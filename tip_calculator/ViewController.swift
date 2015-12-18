@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     // Class Properties
     // Tip Percent defaults to 15%
     var tipPercent = 15
+    var settingsVC : SettingsViewController!
     var menuDrawerView : MenuDrawerView!
     var menuDrawerToggled = false
     var blackView : UIView!
@@ -140,6 +141,11 @@ class ViewController: UIViewController {
         print("settings clicked!!!")
         performSegueWithIdentifier("showSettings", sender: self)
         
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showSettings" {
+            self.settingsVC = segue.destinationViewController as! SettingsViewController
+        }
     }
     func recentTotalsButtonClicked() {
         

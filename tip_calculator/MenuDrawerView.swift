@@ -32,7 +32,7 @@ class MenuDrawerView: UIView {
         print("frame height is: \(view.frame.height) frame width is: \(view.frame.width)")
         print("bounds height is: \(view.bounds.height) bounds width is: \(view.bounds.width)")
         
-        self.frame = CGRectMake(view.frame.width, view.frame.height, widthOfElements(), frame.height)
+        self.frame = CGRectMake(view.frame.width, view.frame.height, widthOfElements(), frame.height*2.0)
         self.controller = controller
         
     }

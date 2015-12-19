@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     // Outlets
     @IBOutlet weak var billTextField: UITextField!
     @IBOutlet weak var tipPercentLabel: UILabel!
+    @IBOutlet weak var tipPercentLabelLabel: UILabel!
     @IBOutlet weak var tipAmountLabel: UILabel!
     @IBOutlet weak var tipSlider: UISlider!
     @IBOutlet weak var totalLabel: UILabel!
@@ -45,7 +46,6 @@ class ViewController: UIViewController {
             prefs.setBool(false, forKey: "presetTip")
         }
         
-        tipPercentLabel.text = "\(tipPercent)%"
         totalLabel.text = "$0.00"
         configureBlur()
         configureBlackView()
@@ -66,12 +66,20 @@ class ViewController: UIViewController {
         if self.presetTipPercent {
             self.tipPercent = prefs.integerForKey("tipPercent")
             self.tipSlider.hidden = true
+            self.tipPercentLabelLabel.hidden = false
+        }
+        else {
+            self.tipSlider.hidden = false
+            self.tipPercentLabelLabel.hidden = true
         }
         
         // Load save totals setting
         let saveTotalsSetting = prefs.boolForKey("saveTotals")
         print("Save totals setting: \(saveTotalsSetting)")
         self.saveTotals = saveTotalsSetting
+        
+        // Set tip percent label
+        tipPercentLabel.text = "\(self.tipPercent)%"
     }
 
     override func didReceiveMemoryWarning() {

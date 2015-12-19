@@ -74,6 +74,11 @@
                                     <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="CFa-YS-e3c"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip Percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2t-bb-GLd">
+                                <rect key="frame" x="256" y="228" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -82,6 +87,7 @@
                             <constraint firstItem="VYN-cs-UAy" firstAttribute="top" secondItem="KR3-FA-AtJ" secondAttribute="bottom" constant="79.5" id="Bxy-hT-zEP"/>
                             <constraint firstItem="siE-Dd-1uH" firstAttribute="top" secondItem="VYN-cs-UAy" secondAttribute="bottom" constant="60" id="CZk-xg-wWx"/>
                             <constraint firstItem="KR3-FA-AtJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="Dgi-a5-xh6"/>
+                            <constraint firstItem="a2t-bb-GLd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DqV-vu-Peq"/>
                             <constraint firstItem="V0S-41-aS3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JxG-xK-NH9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="siE-Dd-1uH" secondAttribute="bottom" constant="307" id="MDl-uE-aa9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Q1c-8f-Hp3" secondAttribute="bottom" constant="307" id="MS3-3X-Afa"/>
@@ -93,6 +99,7 @@
                             <constraint firstItem="Q1c-8f-Hp3" firstAttribute="top" secondItem="yVP-SD-tEV" secondAttribute="bottom" constant="8" id="WcB-4d-2Gd"/>
                             <constraint firstAttribute="leadingMargin" secondItem="KR3-FA-AtJ" secondAttribute="leading" id="bHS-ac-bZx"/>
                             <constraint firstItem="lbX-q9-ccc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="51" id="bcw-SG-6RX"/>
+                            <constraint firstItem="V0S-41-aS3" firstAttribute="top" secondItem="a2t-bb-GLd" secondAttribute="bottom" constant="18" id="cIs-td-8Qp"/>
                             <constraint firstItem="yVP-SD-tEV" firstAttribute="top" secondItem="KR3-FA-AtJ" secondAttribute="bottom" constant="142.5" id="dse-IK-CrO"/>
                             <constraint firstItem="l4p-hK-M3w" firstAttribute="top" secondItem="lbX-q9-ccc" secondAttribute="bottom" constant="142" id="fix-BI-NMm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lbX-q9-ccc" secondAttribute="trailing" id="g6j-A0-Fda"/>
@@ -103,6 +110,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="l4p-hK-M3w" secondAttribute="trailing" id="rwr-nM-L3N"/>
                             <constraint firstItem="VYN-cs-UAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uu6-Ml-nI3"/>
                             <constraint firstItem="siE-Dd-1uH" firstAttribute="top" secondItem="lbX-q9-ccc" secondAttribute="bottom" constant="171" id="wki-pf-6y3"/>
+                            <constraint firstItem="a2t-bb-GLd" firstAttribute="top" secondItem="KR3-FA-AtJ" secondAttribute="bottom" constant="83.5" id="wwh-IC-KtQ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -132,6 +140,7 @@
                         <outlet property="billTextField" destination="lbX-q9-ccc" id="JZM-Xa-VH4"/>
                         <outlet property="tipAmountLabel" destination="l4p-hK-M3w" id="xeA-Ca-jCy"/>
                         <outlet property="tipPercentLabel" destination="V0S-41-aS3" id="kxM-KX-gfy"/>
+                        <outlet property="tipPercentLabelLabel" destination="a2t-bb-GLd" id="IUg-Ht-hYY"/>
                         <outlet property="tipSlider" destination="VYN-cs-UAy" id="GAC-uJ-gd4"/>
                         <outlet property="totalLabel" destination="siE-Dd-1uH" id="Wra-MV-w1t"/>
                         <segue destination="5G2-aF-mMx" kind="show" identifier="showSettings" id="lrx-PO-mpw"/>
@@ -159,39 +168,65 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w3d-Yj-OAP">
-                                <rect key="frame" x="502" y="125" width="51" height="31"/>
+                                <rect key="frame" x="531" y="123" width="51" height="31"/>
                                 <connections>
                                     <action selector="saveTotalSwitchToggled:" destination="5G2-aF-mMx" eventType="valueChanged" id="wVb-ox-F7Y"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mNE-bn-IlJ">
-                                <rect key="frame" x="502" y="189" width="51" height="31"/>
+                                <rect key="frame" x="531" y="183" width="51" height="31"/>
                                 <connections>
                                     <action selector="presetTipSwitchToggled:" destination="5G2-aF-mMx" eventType="valueChanged" id="9O2-P3-EN0"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save Totals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWH-jr-iHS">
-                                <rect key="frame" x="20" y="130" width="88" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="130" width="74" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Preset Tip Percent instead of Slider" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1XV-aj-zxg">
-                                <rect key="frame" x="20" y="194" width="304" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="189.5" width="257" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset Tip Percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gP-hx-QYD">
+                                <rect key="frame" x="20" y="249.5" width="119.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ze1-BF-Dz6">
+                                <rect key="frame" x="520" y="243" width="36" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="onChangePresetTip:" destination="5G2-aF-mMx" eventType="editingChanged" id="tYf-hP-QGx"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlu-wh-3Eh">
+                                <rect key="frame" x="566" y="250" width="14" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="mNE-bn-IlJ" secondAttribute="trailing" constant="29" id="6gW-41-oRN"/>
+                            <constraint firstItem="3gP-hx-QYD" firstAttribute="top" secondItem="1XV-aj-zxg" secondAttribute="bottom" constant="43" id="1FB-Ct-cKe"/>
+                            <constraint firstItem="Ze1-BF-Dz6" firstAttribute="top" secondItem="mNE-bn-IlJ" secondAttribute="bottom" constant="29" id="3G8-px-U9s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mNE-bn-IlJ" secondAttribute="trailing" id="6gW-41-oRN"/>
                             <constraint firstItem="KWH-jr-iHS" firstAttribute="top" secondItem="icG-aE-Xep" secondAttribute="bottom" constant="66" id="6hZ-Q2-m9O"/>
-                            <constraint firstItem="w3d-Yj-OAP" firstAttribute="top" secondItem="icG-aE-Xep" secondAttribute="bottom" constant="61" id="Ta3-BP-ejN"/>
-                            <constraint firstItem="mNE-bn-IlJ" firstAttribute="top" secondItem="w3d-Yj-OAP" secondAttribute="bottom" constant="33" id="WFU-yB-Qm6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="w3d-Yj-OAP" secondAttribute="trailing" constant="29" id="YN7-Fy-gzq"/>
+                            <constraint firstItem="w3d-Yj-OAP" firstAttribute="top" secondItem="icG-aE-Xep" secondAttribute="bottom" constant="59" id="Ta3-BP-ejN"/>
+                            <constraint firstItem="mNE-bn-IlJ" firstAttribute="top" secondItem="w3d-Yj-OAP" secondAttribute="bottom" constant="29" id="WFU-yB-Qm6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w3d-Yj-OAP" secondAttribute="trailing" id="YN7-Fy-gzq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vlu-wh-3Eh" secondAttribute="trailing" id="ffO-xC-ObJ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="3gP-hx-QYD" secondAttribute="leading" id="gJ1-bI-LyX"/>
+                            <constraint firstItem="vlu-wh-3Eh" firstAttribute="top" secondItem="mNE-bn-IlJ" secondAttribute="bottom" constant="36" id="inL-Y6-CSe"/>
                             <constraint firstItem="1XV-aj-zxg" firstAttribute="top" secondItem="KWH-jr-iHS" secondAttribute="bottom" constant="43" id="maA-s6-HVu"/>
                             <constraint firstAttribute="leadingMargin" secondItem="1XV-aj-zxg" secondAttribute="leading" id="o1y-BP-eAk"/>
+                            <constraint firstItem="vlu-wh-3Eh" firstAttribute="leading" secondItem="Ze1-BF-Dz6" secondAttribute="trailing" constant="10" id="q07-FV-jTe"/>
                             <constraint firstAttribute="leadingMargin" secondItem="KWH-jr-iHS" secondAttribute="leading" id="vQt-wD-QGn"/>
                         </constraints>
                     </view>
@@ -199,7 +234,10 @@
                         <barButtonItem key="backBarButtonItem" title="Done" id="c0t-Ak-YzK"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="percentSignLabel" destination="vlu-wh-3Eh" id="Cfh-gU-WSi"/>
+                        <outlet property="presetTIpLabel" destination="3gP-hx-QYD" id="cCh-hP-qZ1"/>
                         <outlet property="presetTipSwitch" destination="mNE-bn-IlJ" id="gxT-SO-fh2"/>
+                        <outlet property="presetTipTextField" destination="Ze1-BF-Dz6" id="V9H-Se-J2m"/>
                         <outlet property="saveTotalsSwitch" destination="w3d-Yj-OAP" id="qBh-Ly-iga"/>
                     </connections>
                 </viewController>

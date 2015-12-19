@@ -25,15 +25,53 @@ class ViewController: UIViewController {
     var menuDrawerToggled = false
     var blackView : UIView!
     var blurredEffectView : UIVisualEffectView!
+    // Settings
+    var presetTipPercent = false
+    var saveTotals = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tipPercentLabel.text = "15%"
+        
+        let prefs = NSUserDefaults.standardUserDefaults()
+        
+        // Check if first launch
+        let firstLaunchSetting = prefs.boolForKey("notFirstLaunch")
+        if !firstLaunchSetting {
+            print("is first launch")
+            // Set settings on first launch
+            prefs.setBool(true, forKey: "notFirstLaunch")
+            prefs.setBool(true, forKey: "saveTotals")
+            prefs.setBool(false, forKey: "presetTip")
+        }
+        
+        tipPercentLabel.text = "\(tipPercent)%"
         totalLabel.text = "$0.00"
         configureBlur()
         configureBlackView()
         configureMenuDrawerView()
+    }
+    
+    // Settings are loaded in view will appear since we want to reload them when coming back from the settings page.
+    override func viewWillAppear(animated: Bool) {
+        
+        let prefs = NSUserDefaults.standardUserDefaults()
+
+        // Load preset tip setting
+        let presetTipPercentSetting = prefs.boolForKey("presetTip")
+        print("Tip percent setting: \(presetTipPercentSetting)")
+        
+        self.presetTipPercent = presetTipPercentSetting
+        // If preset tip perecnt is true, get the saved preset percent and hide slider
+        if self.presetTipPercent {
+            self.tipPercent = prefs.integerForKey("tipPercent")
+            self.tipSlider.hidden = true
+        }
+        
+        // Load save totals setting
+        let saveTotalsSetting = prefs.boolForKey("saveTotals")
+        print("Save totals setting: \(saveTotalsSetting)")
+        self.saveTotals = saveTotalsSetting
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,7 +176,6 @@ class ViewController: UIViewController {
     }
     
     func settingsButtonClicked() {
-        print("settings clicked!!!")
         performSegueWithIdentifier("showSettings", sender: self)
         
     }

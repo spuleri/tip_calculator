@@ -160,9 +160,15 @@
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w3d-Yj-OAP">
                                 <rect key="frame" x="502" y="125" width="51" height="31"/>
+                                <connections>
+                                    <action selector="saveTotalSwitchToggled:" destination="5G2-aF-mMx" eventType="valueChanged" id="wVb-ox-F7Y"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mNE-bn-IlJ">
                                 <rect key="frame" x="502" y="189" width="51" height="31"/>
+                                <connections>
+                                    <action selector="presetTipSwitchToggled:" destination="5G2-aF-mMx" eventType="valueChanged" id="9O2-P3-EN0"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save Totals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWH-jr-iHS">
                                 <rect key="frame" x="20" y="130" width="88" height="21"/>
@@ -192,6 +198,10 @@
                     <navigationItem key="navigationItem" title="Settings" id="ukB-0l-9Cf">
                         <barButtonItem key="backBarButtonItem" title="Done" id="c0t-Ak-YzK"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="presetTipSwitch" destination="mNE-bn-IlJ" id="gxT-SO-fh2"/>
+                        <outlet property="saveTotalsSwitch" destination="w3d-Yj-OAP" id="qBh-Ly-iga"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pt-4a-djn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

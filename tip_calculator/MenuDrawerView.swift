@@ -29,9 +29,6 @@ class MenuDrawerView: UIView {
 
     
     func configure(view:UIView, controller:ViewController) {
-        print("frame height is: \(view.frame.height) frame width is: \(view.frame.width)")
-        print("bounds height is: \(view.bounds.height) bounds width is: \(view.bounds.width)")
-        
         self.frame = CGRectMake(view.frame.width, view.frame.height, widthOfElements(), frame.height*2.0)
         self.controller = controller
         
@@ -39,9 +36,7 @@ class MenuDrawerView: UIView {
     
     func widthOfElements() -> CGFloat {
         let width = recentsButton.frame.origin.x + recentsButton.frame.width + 50
-        print("width is: \(width)")
-        return width
-        
+        return width        
     }
     
     @IBAction func recentTotalsClicked(sender: AnyObject) {

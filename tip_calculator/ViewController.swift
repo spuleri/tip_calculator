@@ -51,6 +51,7 @@ class ViewController: UIViewController {
         configureBlackView()
         configureMenuDrawerView()
         
+        // Create background gradient
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = view.bounds
         gradient.colors = [UIColor(red:0.24, green:0.52, blue:0.66, alpha:1.0).CGColor,UIColor(red:0.27, green:0.80, blue:0.81, alpha:1.0).CGColor, UIColor(red:0.67, green:0.93, blue:0.85, alpha:1.0).CGColor]
@@ -60,6 +61,9 @@ class ViewController: UIViewController {
     // Settings are loaded in view will appear since we want to reload them when coming back from the settings page.
     override func viewWillAppear(animated: Bool) {
         
+        // Hide blur whenever view appears in case it was active
+        hideblur()
+        
         // Set text field as first responder to set focus to it whenever view appears
         billTextField.becomeFirstResponder()
         
@@ -67,8 +71,6 @@ class ViewController: UIViewController {
 
         // Load preset tip setting
         let presetTipPercentSetting = prefs.boolForKey("presetTip")
-        print("Tip percent setting: \(presetTipPercentSetting)")
-        
         self.presetTipPercent = presetTipPercentSetting
         // If preset tip perecnt is true, get the saved preset percent and hide slider
         if self.presetTipPercent {
@@ -83,7 +85,6 @@ class ViewController: UIViewController {
         
         // Load save totals setting
         let saveTotalsSetting = prefs.boolForKey("saveTotals")
-        print("Save totals setting: \(saveTotalsSetting)")
         self.saveTotals = saveTotalsSetting
         
         // Set tip percent label
@@ -158,7 +159,7 @@ class ViewController: UIViewController {
         
     }
     func configureBlur() {
-        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffect = UIBlurEffect(style: .Dark)
         self.blurredEffectView = UIVisualEffectView(effect: blurEffect)
         self.blurredEffectView.frame = self.view.bounds
         self.blurredEffectView.alpha = 0.6
@@ -204,16 +205,23 @@ class ViewController: UIViewController {
     }
     
     func settingsButtonClicked() {
+        menuButtonClicked(self)
         performSegueWithIdentifier("showSettings", sender: self)
         
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showSettings" {
-            self.settingsVC = segue.destinationViewController as! SettingsViewController
-        }
-    }
+    // ModalVC: Transparent BG -> http://stackoverflow.com/a/33122882/3590748
     func recentTotalsButtonClicked() {
-        
+        menuButtonClicked(self)
+        addBlur()
+        performSegueWithIdentifier("showRecents", sender: self)        
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showRecents" {
+            // Set "parentVC" property of RecentsTableVC to self, in order to call methods from here
+            let nav = segue.destinationViewController as! UINavigationController
+            let recentsVC = nav.topViewController as! RecentsTableViewController
+            recentsVC.parentVC = self
+        }
     }
 }
 

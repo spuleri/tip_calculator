@@ -29,7 +29,6 @@ class SettingsViewController: UIViewController {
         let prefs = NSUserDefaults.standardUserDefaults()
         // Load preset tip setting
         let presetTipPercentSetting = prefs.boolForKey("presetTip")
-        print("Tip percent setting: \(presetTipPercentSetting)")
         
         self.presetTipPercent = presetTipPercentSetting
         // If preset tip perecnt is true, get the saved preset percent and hide slider
@@ -44,7 +43,6 @@ class SettingsViewController: UIViewController {
         
         // Load save totals setting
         let saveTotalsSetting = prefs.boolForKey("saveTotals")
-        print("Save totals setting: \(saveTotalsSetting)")
         self.saveTotals = saveTotalsSetting
         // Configure Switches
         self.saveTotalsSwitch.setOn(self.saveTotals, animated: true)

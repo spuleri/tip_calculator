@@ -45,15 +45,23 @@ class ViewController: UIViewController {
             prefs.setBool(true, forKey: "saveTotals")
             prefs.setBool(false, forKey: "presetTip")
         }
-        
+
         totalLabel.text = "$0.00"
         configureBlur()
         configureBlackView()
         configureMenuDrawerView()
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = view.bounds
+        gradient.colors = [UIColor(red:0.24, green:0.52, blue:0.66, alpha:1.0).CGColor,UIColor(red:0.27, green:0.80, blue:0.81, alpha:1.0).CGColor, UIColor(red:0.67, green:0.93, blue:0.85, alpha:1.0).CGColor]
+        self.view.layer.insertSublayer(gradient, atIndex: 0)
     }
     
     // Settings are loaded in view will appear since we want to reload them when coming back from the settings page.
     override func viewWillAppear(animated: Bool) {
+        
+        // Set text field as first responder to set focus to it whenever view appears
+        billTextField.becomeFirstResponder()
         
         let prefs = NSUserDefaults.standardUserDefaults()
 
@@ -81,10 +89,25 @@ class ViewController: UIViewController {
         // Set tip percent label
         tipPercentLabel.text = "\(self.tipPercent)%"
     }
+    
+    override func viewDidLayoutSubviews() {
+        configureTextView()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func configureTextView() {
+        
+        let bottomBorder = CALayer()
+        bottomBorder.frame = CGRectMake(0.0, self.billTextField.frame.size.height-1, self.billTextField.frame.size.width, 1.0);
+        bottomBorder.backgroundColor = UIColor.whiteColor().CGColor
+        self.billTextField.borderStyle = .None
+        self.billTextField.layer.addSublayer(bottomBorder)
+        self.billTextField.returnKeyType = .Done
+
     }
     
     func configureBlackView() {
@@ -100,9 +123,6 @@ class ViewController: UIViewController {
         let navBarView = self.navigationController?.navigationBar
         menuDrawerView.configure(navBarView!, controller: self)
         self.view.addSubview(menuDrawerView)
-//        let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "dismissAddPollView")
-//        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
-//        self.menuDrawerView.addGestureRecognizer(swipeDown)
     }
     
     func showMenuDrawerView() {

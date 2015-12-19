@@ -49,6 +49,8 @@ class SettingsViewController: UIViewController {
         // Configure Switches
         self.saveTotalsSwitch.setOn(self.saveTotals, animated: true)
         self.presetTipSwitch.setOn(self.presetTipPercent, animated: true)
+        // Set 'done' on keypad
+        self.presetTipTextField.returnKeyType = .Done
     }
 
     override func didReceiveMemoryWarning() {

@@ -171,7 +171,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="totalTableCell" rowHeight="120" id="IBe-AD-mNs">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="totalTableCell" rowHeight="120" id="IBe-AD-mNs" customClass="RecentTableViewCell" customModule="tip_calculator" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IBe-AD-mNs" id="9GZ-Hn-DmT">
@@ -259,6 +259,12 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.02758367323659161" green="0.62962367049231438" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="billLabel" destination="eNM-6o-t1v" id="lhR-ft-Hg5"/>
+                                    <outlet property="dateLabel" destination="vH7-5B-Qo5" id="ZTq-xD-rRe"/>
+                                    <outlet property="tipLabel" destination="JmE-cK-RHd" id="HRQ-CL-Hxa"/>
+                                    <outlet property="totalLabel" destination="8ac-Vt-2s1" id="pU4-j8-Unf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

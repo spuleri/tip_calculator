@@ -16,6 +16,8 @@
 		E150F3C51C247579004BD9A6 /* MenuDrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E150F3C41C247579004BD9A6 /* MenuDrawerView.swift */; };
 		E1646D771C24ACF700EEDD35 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1646D761C24ACF700EEDD35 /* SettingsViewController.swift */; };
 		E183C91A1C25FD3E00A61904 /* RecentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183C9191C25FD3E00A61904 /* RecentsTableViewController.swift */; };
+		E183C91C1C260BA800A61904 /* Total.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183C91B1C260BA800A61904 /* Total.swift */; };
+		E183C9201C276EEE00A61904 /* RecentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183C91F1C276EEE00A61904 /* RecentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		E150F3C41C247579004BD9A6 /* MenuDrawerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDrawerView.swift; sourceTree = "<group>"; };
 		E1646D761C24ACF700EEDD35 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E183C9191C25FD3E00A61904 /* RecentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentsTableViewController.swift; sourceTree = "<group>"; };
+		E183C91B1C260BA800A61904 /* Total.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Total.swift; sourceTree = "<group>"; };
+		E183C91F1C276EEE00A61904 /* RecentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				E150F3AA1C2364F2004BD9A6 /* ViewController.swift */,
 				E1646D761C24ACF700EEDD35 /* SettingsViewController.swift */,
 				E183C9191C25FD3E00A61904 /* RecentsTableViewController.swift */,
+				E183C91F1C276EEE00A61904 /* RecentTableViewCell.swift */,
+				E183C91B1C260BA800A61904 /* Total.swift */,
 				E150F3C41C247579004BD9A6 /* MenuDrawerView.swift */,
 				E150F3C01C2472B4004BD9A6 /* MenuDrawerView.xib */,
 				E150F3AC1C2364F2004BD9A6 /* Main.storyboard */,
@@ -149,9 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E183C91C1C260BA800A61904 /* Total.swift in Sources */,
 				E183C91A1C25FD3E00A61904 /* RecentsTableViewController.swift in Sources */,
 				E150F3AB1C2364F2004BD9A6 /* ViewController.swift in Sources */,
 				E150F3C51C247579004BD9A6 /* MenuDrawerView.swift in Sources */,
+				E183C9201C276EEE00A61904 /* RecentTableViewCell.swift in Sources */,
 				E150F3A91C2364F2004BD9A6 /* AppDelegate.swift in Sources */,
 				E1646D771C24ACF700EEDD35 /* SettingsViewController.swift in Sources */,
 			);

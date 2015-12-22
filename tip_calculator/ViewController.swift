@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     var menuDrawerToggled = false
     var blackView : UIView!
     var blurredEffectView : UIVisualEffectView!
+    var totals : [Total] = []
+    
     // Settings
     var presetTipPercent = false
     var saveTotals = true
@@ -44,7 +46,23 @@ class ViewController: UIViewController {
             prefs.setBool(true, forKey: "notFirstLaunch")
             prefs.setBool(true, forKey: "saveTotals")
             prefs.setBool(false, forKey: "presetTip")
+            // Set empty mutable array to hold recent totals
+            prefs.setObject([], forKey: "recentTotals")
         }
+        
+        // TODO: make sure loading from NSUserDefaults works
+        // Load array of recent totals in viewDidLoad from NSUserDefaults
+        if let savedTotals = prefs.objectForKey("recentTotals") as? NSData {
+            self.totals = NSKeyedUnarchiver.unarchiveObjectWithData(savedTotals) as! [Total]
+        }
+        print ("Theere are \(self.totals.count) totals")
+        for t in self.totals {
+            print("Total: \(t.total)")
+            print ("Date: \(t.date)")
+        }
+        
+        
+
 
         totalLabel.text = "$0.00"
         configureBlur()
@@ -92,6 +110,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        // Needs to be done in here cuz of some SO thread that says so if im using auto-layout
         configureTextView()
     }
 
@@ -191,12 +210,35 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    func timerFireMethod(total: Total) {
+        print(total.total)
+        let totalLabelValue = ((self.totalLabel.text! as NSString).stringByReplacingOccurrencesOfString("$", withString: "") as NSString).doubleValue
+        if total.total == totalLabelValue {
+            print("same, gonna save")
+            saveTotal(total)
+        }
+    }
+    func saveTotal(total: Total) {
+        self.totals.append(total)
+        let prefs = NSUserDefaults.standardUserDefaults()
+        let data = NSKeyedArchiver.archivedDataWithRootObject(self.totals) as NSData
+        prefs.setObject(data, forKey: "recentTotals")
+        print("Saved a total")
+        print ("self.totals size is \(self.totals.count)")
+    }
+    
     func calculateTip(){
         let billAmount = (billTextField.text! as NSString).doubleValue
         let tip = billAmount * Double(tipPercent)/100.0
         let total = billAmount + tip
         tipAmountLabel.text = String(format: "$%.2f", arguments: [tip])
         totalLabel.text = String(format: "$%.2f", arguments: [total])
+        
+        // Create total object
+        let currentTotal = Total(bill: billAmount, tipPercent: tipPercent, tip: tip, total: total, date: NSDate())
+        // Only want to save if a total is unchanged after ~6sec. If someone is sliding the slider around, we dont want to save a bunch of totals.
+        self.performSelector("timerFireMethod:", withObject: currentTotal, afterDelay: 6.0)
+        
     }
     
     func cancelButtonClicked() {
@@ -221,6 +263,8 @@ class ViewController: UIViewController {
             let nav = segue.destinationViewController as! UINavigationController
             let recentsVC = nav.topViewController as! RecentsTableViewController
             recentsVC.parentVC = self
+            // Send reverse of totals array, so Recents VC gets most recent first
+            recentsVC.totals = self.totals.reverse()
         }
     }
 }

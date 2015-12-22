@@ -12,11 +12,15 @@ class RecentsTableViewController: UITableViewController {
     
     // Properties
     var parentVC : ViewController!
+    var totals : [Total] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = UIColor.clearColor()
-
+        for t in self.totals {
+            print(t.total)
+            print(t.date)
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,15 +49,24 @@ class RecentsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return self.totals.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("totalTableCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("totalTableCell", forIndexPath: indexPath) as! RecentTableViewCell
+        let index = indexPath.row
 
          //Configure the cell...
         cell.backgroundColor = UIColor.clearColor()
+        
+        cell.totalLabel.text = String(format: "$%.2f", arguments: [self.totals[index].total])
+        cell.billLabel.text = String(format: "$%.2f", arguments: [self.totals[index].bill])
+        cell.tipLabel.text = String(format: "$%.2f", arguments: [self.totals[index].tip])
+        let dateFmt = NSDateFormatter()
+        dateFmt.dateFormat = "MM-dd-yyyy"
+        cell.dateLabel.text = dateFmt.stringFromDate(self.totals[index].date)
+        
         return cell
     }
     

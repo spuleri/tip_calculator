@@ -50,7 +50,6 @@ class ViewController: UIViewController {
             prefs.setObject([], forKey: "recentTotals")
         }
         
-        // TODO: make sure loading from NSUserDefaults works
         // Load array of recent totals in viewDidLoad from NSUserDefaults
         if let savedTotals = prefs.objectForKey("recentTotals") as? NSData {
             self.totals = NSKeyedUnarchiver.unarchiveObjectWithData(savedTotals) as! [Total]
@@ -60,9 +59,6 @@ class ViewController: UIViewController {
             print("Total: \(t.total)")
             print ("Date: \(t.date)")
         }
-        
-        
-
 
         totalLabel.text = "$0.00"
         configureBlur()
@@ -206,17 +202,21 @@ class ViewController: UIViewController {
         print(total.total)
         let totalLabelValue = ((self.totalLabel.text! as NSString).stringByReplacingOccurrencesOfString("$", withString: "") as NSString).doubleValue
         if total.total == totalLabelValue {
-            print("same, gonna save")
             saveTotal(total)
         }
     }
     func saveTotal(total: Total) {
-        self.totals.append(total)
-        let prefs = NSUserDefaults.standardUserDefaults()
-        let data = NSKeyedArchiver.archivedDataWithRootObject(self.totals) as NSData
-        prefs.setObject(data, forKey: "recentTotals")
-        print("Saved a total")
-        print ("self.totals size is \(self.totals.count)")
+        if self.saveTotals {
+            self.totals.append(total)
+            let prefs = NSUserDefaults.standardUserDefaults()
+            let data = NSKeyedArchiver.archivedDataWithRootObject(self.totals) as NSData
+            prefs.setObject(data, forKey: "recentTotals")
+            print("Saved a total")
+            print ("self.totals size is \(self.totals.count)")
+        }
+        else {
+            print("Did not save total, user has this setting turned off")
+        }
     }
     
     func calculateTip(){

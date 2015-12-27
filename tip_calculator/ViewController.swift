@@ -141,7 +141,7 @@ class ViewController: UIViewController {
     func configureMenuDrawerView() {
         menuDrawerView = NSBundle.mainBundle().loadNibNamed("MenuDrawerView", owner: self, options: nil)[0] as? MenuDrawerView
         let navBarView = self.navigationController?.navigationBar
-        menuDrawerView.configure(navBarView!, controller: self)
+        menuDrawerView.configure(navBarView!, parent: self)
         self.view.addSubview(menuDrawerView)
         menuDrawerView.setupPhysics()
     }
@@ -150,23 +150,10 @@ class ViewController: UIViewController {
         self.menuDrawerView.snapToMid()
         self.blackView.alpha = 0.5
         
-//        UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
-////            var viewFrame = self.menuDrawerView.frame
-//            self.menuDrawerView.frame.origin.x = self.view.frame.size.width - self.menuDrawerView.widthOfElements()
-////            self.menuDrawerView.frame = viewFrame
-//            self.blackView.alpha = 0.5
-//            }, completion: { finished in })
     }
     func hideMenuDrawerView() {
         self.menuDrawerView.snapToRight()
         self.blackView.alpha = 0.0
-        
-//        UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveEaseInOut, animations: {
-////            var viewFrame = self.menuDrawerView.frame
-//            self.menuDrawerView.frame.origin.x = self.view.frame.size.width
-////            self.menuDrawerView.frame = viewFrame
-//             self.blackView.alpha = 0.0
-//            }, completion: { finished in })
     }
     
     @IBAction func menuButtonClicked(sender: AnyObject) {

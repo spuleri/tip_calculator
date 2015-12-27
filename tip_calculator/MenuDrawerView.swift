@@ -18,7 +18,6 @@ class MenuDrawerView: UIView, UIGestureRecognizerDelegate {
     
     // Properties
     var animator: UIDynamicAnimator!
-    var container: UICollisionBehavior!
     var snap: UISnapBehavior!
     var dynamicItem: UIDynamicItemBehavior!
     var gravity: UIGravityBehavior!
@@ -33,7 +32,7 @@ class MenuDrawerView: UIView, UIGestureRecognizerDelegate {
     }
     */
     
-    var controller : ViewController!
+    var parent : ViewController!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
@@ -49,7 +48,7 @@ class MenuDrawerView: UIView, UIGestureRecognizerDelegate {
         screenEdgePan.delegate = self
         screenEdgePan.cancelsTouchesInView = false
 
-        self.controller.view.addGestureRecognizer(screenEdgePan)
+        self.parent.view.addGestureRecognizer(screenEdgePan)
         self.addGestureRecognizer(panGestureRecognizer)
 
         animator = UIDynamicAnimator(referenceView: self.superview!)
@@ -58,27 +57,13 @@ class MenuDrawerView: UIView, UIGestureRecognizerDelegate {
         dynamicItem.elasticity = 0
         
         gravity = UIGravityBehavior(items: [self])
-//        gravity.gravityDirection = CGVectorMake(-1, 0)
         
-        container = UICollisionBehavior(items: [self])
         
-//        configureContainer()
-        
-//        animator.addBehavior(gravity)
         animator.addBehavior(dynamicItem)
-//        animator.addBehavior(container)
         
     }
     
-//    func configureContainer() {
-//        let boundaryWidth = UIScreen.mainScreen().bounds.size.width
-//        let boundaryHeight = UIScreen.mainScreen().bounds.size.height
-////        print ("boundry width = \(boundaryWidth)")
-////        print("boundru hieght = \(boundaryHeight)")
-////        container.addBoundaryWithIdentifier("left", fromPoint: CGPointMake(boundaryWidth/2, 0), toPoint: CGPointMake(boundaryWidth, boundaryHeight))
-////        container.addBoundaryWithIdentifier("right", fromPoint: CGPointMake(boundaryWidth, 0), toPoint: CGPointMake(boundaryWidth, boundaryHeight))
-//    }
-    
+
 
     func handlePan(pan: UIPanGestureRecognizer){
         // Remove all behaviors
@@ -93,73 +78,58 @@ class MenuDrawerView: UIView, UIGestureRecognizerDelegate {
         }
         else if pan.state == .Began {
             animator.addBehavior(dynamicItem)
-            animator.addBehavior(container)
-//            snapToMid()
         }
         else {
             // Drag the frame around
             self.frame.origin.x = self.frame.origin.x + (velocity * 0.02)
-//            animator.removeBehavior(snap)
-//            snap = UISnapBehavior(item: self, snapToPoint: CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)))
-//            animator.addBehavior(snap)
         }
     
     }
     
     func panGestureEnded(velocity: CGFloat) {
-        print ("in pan gesture ended&&&&&&&&&&&&&&&&")
-//        animator.removeBehavior(snap)
-
-//        let velocity = dynamicItem.linearVelocityForItem(self)
         print ("x FINAL velocity = \(velocity)")
         
         if velocity < 0 {
-            controller.menuDrawerToggled = true
-            controller.blackView.alpha = 0.5
-            controller.addBlur()
+            parent.menuDrawerToggled = true
+            parent.blackView.alpha = 0.5
+            parent.addBlur()
             snapToMid()
         }
         else {
-            controller.menuDrawerToggled = false
-            controller.blackView.alpha = 0.0
-            controller.hideblur()
+            parent.menuDrawerToggled = false
+            parent.blackView.alpha = 0.0
+            parent.hideblur()
             snapToRight()
         }
 
     }
+    
+    // Snap behavior snaps the views center to the specified point..
     func snapToMid() {
         animator.removeAllBehaviors()
-        // THE PROBLEM IS, THAT SNAP BEHAIVOR SNAPS MY VIEWS !!!!CENTER!!!1 TO THE SPECIFIED POINT... WOW.
-        print("snapping mid lol ")
         gravity.gravityDirection = CGVectorMake(-2.5, 0)
         var xpos = ((self.superview?.bounds.width)! - widthOfElements())
         let halfOfWidth = self.frame.width/2
-        print("half of width = \(halfOfWidth)")
         xpos += halfOfWidth
-        print ("snap mid x pos: \(xpos)")
         snap = UISnapBehavior(item: self, snapToPoint: CGPointMake(xpos, CGRectGetMidY(self.frame)))
+        snap.damping = 0.6
         animator.addBehavior(snap)
     }
     func snapToRight() {
         animator.removeAllBehaviors()
-        print("snapping right lol")
         gravity.gravityDirection = CGVectorMake(2.5, 0)
-        
         var xpos = (self.superview?.bounds.width)! - 1
         let halfOfWidth = self.frame.width/2
-        print("half of width = \(halfOfWidth)")
         xpos += halfOfWidth
-        print ("snap right x pos: \(xpos)")
         
         snap = UISnapBehavior(item: self, snapToPoint: CGPointMake(xpos, CGRectGetMidY(self.frame)))
+        snap.damping = 0.6
         animator.addBehavior(snap)
     }
     
-    func configure(view:UIView, controller:ViewController) {
+    func configure(view:UIView, parent:ViewController) {
         self.frame = CGRectMake(view.frame.width - 1, view.frame.height, frame.width, frame.height*2.0)
-        
-        self.controller = controller
-        
+        self.parent = parent
     }
     
     
@@ -169,15 +139,15 @@ class MenuDrawerView: UIView, UIGestureRecognizerDelegate {
     }
     
     @IBAction func recentTotalsClicked(sender: AnyObject) {
-        self.controller.recentTotalsButtonClicked()
+        self.parent.recentTotalsButtonClicked()
     }
     
     @IBAction func settingsClicked(sender: AnyObject) {
-        self.controller.settingsButtonClicked()
+        self.parent.settingsButtonClicked()
     }
     
     @IBAction func cancelClicked(sender: AnyObject) {
-        self.controller.cancelButtonClicked()
+        self.parent.cancelButtonClicked()
     }
 
 }
